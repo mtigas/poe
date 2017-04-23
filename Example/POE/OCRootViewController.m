@@ -35,8 +35,9 @@
     
     if (self.nextVC == self.conctVC)
     {
+        // For this demo: "finish" Tor connection after 6 seconds.
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.conctVC done];
+            [self.conctVC connectionFinished];
         });
     }
 }
@@ -44,6 +45,7 @@
 - (void)introFinished:(BOOL)useBridge
 {
     self.nextVC = self.conctVC;
+    [self.conctVC connectionStarted];
 
     [self dismissViewControllerAnimated: true completion: nil];
 }

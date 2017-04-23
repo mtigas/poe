@@ -32,14 +32,16 @@ class RootViewController: UIViewController, POEDelegate {
         present(nextVC ?? introVC, animated: animated, completion: nil)
 
         if nextVC == conctVC {
+            // For this demo: "finish" Tor connection after 6 seconds.
             DispatchQueue.main.asyncAfter(deadline: .now() + 6, execute: {
-                self.conctVC.done()
+                self.conctVC.connectionFinished()
             })
         }
     }
 
     func introFinished(_ useBridge: Bool) {
         nextVC = conctVC
+        conctVC.connectionStarted()
 
         dismiss(animated: true, completion: nil)
     }

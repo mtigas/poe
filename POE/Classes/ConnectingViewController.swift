@@ -30,17 +30,36 @@ public class ConnectingViewController: XibViewController {
         startBrowsingBt.layer.borderWidth = 1
         startBrowsingBt.layer.borderColor = UIColor.white.cgColor
         startBrowsingBt.layer.cornerRadius = 20
+    }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            self.showBusy()
-        })
+    // MARK: - Tor connection progress handlers
+    //
+    // Eventually I should maybe define these in a delegate protocol.
+
+    /**
+        
+    */
+    public func connectionStarted() {
+        self.showBusy()
+    }
+
+    /**
+        Updates the user interface based on the current Tor connection
+        progress.
+        
+        `progress`: an `Int` from 0-100, representing the bootstrap progress
+                    during Tor's initialization (`status/bootstrap-phase`)
+    */
+    public func connectionProgress(progress: Int) {
+        // TODO; this would optionally allow us to do "progress bar" or something
+        _ = progress
     }
 
     /**
         This will hide the activity indicator and instead show a label
         "Connected!" and a button "Start Browsing".
      */
-    public func done() {
+    public func connectionFinished() {
         self.activityIndicator.isHidden = true
         self.infoLb.text = NSLocalizedString("Connected!", comment: "")
         self.infoLb.isHidden = false
