@@ -52,6 +52,7 @@ public class ConnectingViewController: XibViewController {
     */
     public func connectionProgress(progress: Int) {
         // TODO; this would optionally allow us to do "progress bar" or something
+        //print("CONNECTING PROGRESS: ", progress)
         _ = progress
     }
 
@@ -84,7 +85,7 @@ public class ConnectingViewController: XibViewController {
     
     @IBAction func startBrowsing() {
         if let presenter = presentingViewController as? POEDelegate {
-            presenter.connectingFinished()
+            presenter.userFinishedConnecting()
         }
     }
 

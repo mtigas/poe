@@ -50,7 +50,8 @@
     [self dismissViewControllerAnimated: true completion: nil];
 }
 
-- (void)connectingFinished
+// POEDelegate callback when user clicks "Continue"
+- (void)userFinishedConnecting
 {
     self.nextVC = self.errorVC;
 

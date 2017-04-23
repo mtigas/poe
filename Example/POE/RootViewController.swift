@@ -46,7 +46,8 @@ class RootViewController: UIViewController, POEDelegate {
         dismiss(animated: true, completion: nil)
     }
 
-    func connectingFinished() {
+    // POEDelegate callback when user clicks "Continue"
+    func userFinishedConnecting() {
         nextVC = errorVC
 
         dismiss(animated: true, completion: nil)
